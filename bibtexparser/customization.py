@@ -372,6 +372,10 @@ def getnames(names):
         namestring = namestring.strip()
         if len(namestring) < 1:
             continue
+        if namestring[0] == "{" and namestring[-1] == "}":
+            # Name is quoted, don't do any tidying
+            tidynames.append(namestring)
+            continue
         if ',' in namestring:
             namesplit = namestring.split(',', 1)
             last = namesplit[0].strip()
